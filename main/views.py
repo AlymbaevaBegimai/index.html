@@ -10,14 +10,3 @@ def test(request):
 
 def second(request):
     return HttpResponse('test 2 page')  
-
-def create(request):
-    return render(request, 'create.html')
-
-
-def update(request):
-    return render(request, 'update.html')
-
-
-def delete(request):
-    return render(request, 'delete.html')
