@@ -46,3 +46,5 @@ def close_todo(request, id):
     todo.save()
     return redirect(test)
 
+def add (request):
+    return HttpResponse("book") 
