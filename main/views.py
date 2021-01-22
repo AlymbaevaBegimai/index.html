@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-from .models import *
+from .models import ToDo, BookStore
 
 def homepage(request):
     return render(request, 'index.html')
@@ -46,5 +46,23 @@ def close_todo(request, id):
     todo.save()
     return redirect(test)
 
-def add (request):
-    return HttpResponse("book") 
+def bookStore(request):
+    book_list = BookStore.objects.all()
+    return render(request, 'bookStore.html', {"book_list": book_list}) 
+
+def book(request):
+    book_list = BookStore.objects.all()
+    return render(request, 'books.html', {"book_list": book_list}) 
+
+def add_book(request):
+    form = request.POST
+    title = form['book_заголовок']
+    subtitle = form['book_подзаголовок']
+    description = form['book_описание']
+    author = form['book_автор']
+    genre = form['book_жанр']
+    year = form['book_год']
+    price = form['book_цена']
+    return HttpResponse('Форма получена')   
+   
+ 

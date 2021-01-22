@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models 
 
 #переведие полей задач
 
@@ -13,8 +13,9 @@ class BookStore(models.Model):
     title = models.CharField( max_length=100, name='заголовок')
     subtitle = models.CharField(max_length=80, name='подзаголовок')
     description = models.CharField(max_length=700,name='описание')
-    price = models.IntegerField(name='цена')
+    price = models.IntegerField(name='цена', default=0) 
     genre = models.CharField(max_length=50,name='жанр')
     author = models.CharField(max_length=50,name='автор')
-    year = models.DateField(max_length=50,name='год')
+    year = models.DateTimeField(name='год')
     date = models.DateField(auto_now_add=50,name='дата')  
+    
