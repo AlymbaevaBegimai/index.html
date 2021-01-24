@@ -49,7 +49,7 @@
                     <div class="action_buttons">
                         {% if todo.is_favorite %}
 
-                             <a href="{% url 'unmark-todo' todo.id %}"><img src="{% static './icons/marked.jpg' %}"/></a>
+                            <a href="{% url 'unmark-todo' todo.id %}"><img src="{% static './icons/marked.jpg' %}"/></a>
 
                         {% else %}
                              <a href="{% url 'mark-todo' todo.id %}"><img src="{% static './icons/unmarked.png' %}"/></a>

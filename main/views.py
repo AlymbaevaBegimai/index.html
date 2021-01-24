@@ -46,23 +46,40 @@ def close_todo(request, id):
     todo.save()
     return redirect(test)
 
-def bookStore(request):
-    book_list = BookStore.objects.all()
-    return render(request, 'bookStore.html', {"book_list": book_list}) 
-
-def book(request):
-    book_list = BookStore.objects.all()
-    return render(request, 'books.html', {"book_list": book_list}) 
+def books(request):
+    books = BookStore.objects.all()
+    return render(request, 'bookStore.html', {'books':books}) 
 
 def add_book(request):
     form = request.POST
-    title = form['book_заголовок']
-    subtitle = form['book_подзаголовок']
-    description = form['book_описание']
-    author = form['book_автор']
-    genre = form['book_жанр']
-    year = form['book_год']
-    price = form['book_цена']
-    return HttpResponse('Форма получена')   
-   
- 
+    book = BookStore(
+        title=form['title'],
+        subtitle=form['subtitle'],
+        description=form['description'],
+        author=form['author'],
+        genre=form['genre'],
+        year=form['date'][:10],
+        price=form['price']
+    )
+
+    book.save()
+
+    return redirect(bookStore)  
+
+    def delete_book(request, id):
+        book = BookStore.objects.get(id=id)
+        book.delete()
+        return redirect(bookStore)  
+
+    def mark_book(request, id):
+        book = BookStore.objects.get(id=id)
+        book.is_favorite = True
+        book.save()
+        return redirect(bookStore) 
+
+    def unmark_book(request, id):
+        book = BookStore.objects.get(id=id)
+        book.is_favorite = False
+        book.save()
+        return redirect(bookStore) 
+

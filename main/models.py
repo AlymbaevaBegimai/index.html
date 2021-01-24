@@ -10,12 +10,12 @@ class ToDo(models.Model): #models предоставил сам django
     
 
 class BookStore(models.Model):
-    title = models.CharField( max_length=100, name='заголовок')
-    subtitle = models.CharField(max_length=80, name='подзаголовок')
-    description = models.CharField(max_length=700,name='описание')
-    price = models.IntegerField(name='цена', default=0) 
-    genre = models.CharField(max_length=50,name='жанр')
-    author = models.CharField(max_length=50,name='автор')
-    year = models.DateTimeField(name='год')
-    date = models.DateField(auto_now_add=50,name='дата')  
+    title = models.CharField( max_length=100)
+    subtitle = models.CharField(max_length=80)
+    description = models.TextField(max_length=100)
+    price = models.IntegerField() 
+    genre = models.CharField(max_length=50)
+    author = models.CharField(max_length=100)
+    year = models.DateTimeField()
+    is_favorite = models.BooleanField(default=False)  
     
